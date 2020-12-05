@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vendor_name: MyText
+  phone_number: 1
+  address: MyText
+  suburb: MyText
+  state: MyText
+  postcode: 1
+  website: MyText
+  logo: MyText
+  background_image: MyText
+  hero_image: MyText
+  opening_hours: MyText
+  bio: MyText
+
+two:
+  vendor_name: MyText
+  phone_number: 1
+  address: MyText
+  suburb: MyText
+  state: MyText
+  postcode: 1
+  website: MyText
+  logo: MyText
+  background_image: MyText
+  hero_image: MyText
+  opening_hours: MyText
+  bio: MyText

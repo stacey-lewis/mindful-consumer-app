@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  email: MyText
+  suburb: MyText
+  phone_number: 1
+  opt_in_for_emails: false
+  postcode: 1
+  state: MyText
+
+two:
+  name: MyText
+  email: MyText
+  suburb: MyText
+  phone_number: 1
+  opt_in_for_emails: false
+  postcode: 1
+  state: MyText
