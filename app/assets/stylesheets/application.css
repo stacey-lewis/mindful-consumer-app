@@ -1,15 +1,94 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* * {
+  border: 1pt solid orange;
+} */
+
+body {
+  margin: 0 40px;
+  font-family: 'Nunito', sans-serif;
+}
+
+header {
+  margin-bottom: 40px;
+}
+
+h1 {
+  text-transform: lowercase;
+  fo
+}
+
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.menu > li {
+  display: inline-block;
+  padding-left: 20px;
+  list-style-type: none;
+
+
+  /* position: absolute; */
+}
+
+.menu {
+  padding: 0;
+
+}
+
+footer{
+  margin-top: 50px;
+  text-align: center;
+
+}
+
+
+
+
+/* #=============vendor index page======================== */
+
+
+.vendor_result_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(25%, 1fr));
+
+
+}
+.vendor_list {
+  list-style-type: none;
+  text-align: center;
+  height: 250px;
+  /* background-color: rgb(237, 237, 225); */
+  padding: 20px;
+  margin: 20px;
+}
+
+.vendor_list > img {
+  z-index: -1;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1200px) {
+  .vendor_result_list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(30%, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .vendor_result_list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(50%, 1fr));
+  }
+}
+
+
+@media (max-width: 550px) {
+  .vendor_result_list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(90%, 1fr));
+  }
+}

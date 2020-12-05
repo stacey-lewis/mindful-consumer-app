@@ -1,11 +1,18 @@
-<h2>Resources list</h2>
-
-<% @registered_vendors.each do |v| %>
-<ul>
-  <li class="vendor_list">
-  <%= v.vendor_name %>
-  </li>
-</ul>
+<h2>Directory</h2>
+<h3>Insert search functionality</h3>
 
 
-<% end %>
+<div class="vendor">
+
+  <div class="vendor_result_list">
+  <% @registered_vendors.each do |v| %>
+
+    <p class="vendor_list">
+      <%= link_to v.vendor_name, registered_vendor_path(v.id)%><br>
+      <%=v.suburb%>, <%=v.state%>
+      <br><br>
+      <%= image_tag v.background_image %>
+    </p>
+    <% end %>
+  </div>
+</div>

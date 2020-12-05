@@ -1,2 +1,19 @@
-<h1>RegisteredVendors#show</h1>
-<p>Find me in app/views/registered_vendors/show.html.erb</p>
+
+<div class="vendor_title">
+
+<p><%= link_to "back to directory", registered_vendors_path%></p>
+
+<%= image_tag @registered_vendor.logo, class: "vendor_logo", alt: @registered_vendor.vendor_name%>
+<h2><%=@registered_vendor.vendor_name%></h2></div>
+<h3><%=@registered_vendor.suburb %></h3>
+
+<div>
+<p><%= @registered_vendor.bio %></p>
+<%= image_tag @registered_vendor.background_image, class: "vendor_background" %>
+</div>
+
+<p><strong>Address:</strong>
+  <%= @registered_vendor.address %>, <%= @registered_vendor.suburb %>, <%= @registered_vendor.state %>, <%= @registered_vendor.postcode %></p>
+<br>
+<p><%= @registered_vendor.opening_hours %></p>
+<!-- Add in icons of what they offer -->

@@ -10,6 +10,7 @@ class RegisteredVendorsController < ApplicationController
   end
 
   def show
+    @registered_vendor = RegisteredVendor.find params[:id]
   end
 
   def edit

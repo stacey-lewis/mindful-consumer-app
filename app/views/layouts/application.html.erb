@@ -7,19 +7,25 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+</style>
   </head>
 
   <body>
     <header>
       <nav>
         <h1>Mindful Consumer</h1>
-        <ul>
-          <li class="menu">
-            
-          </li>
+        <ul class="menu">
+          <li>Sign up</li>
+          <li>Log in</li>
+          <li>Directory</li>
         </ul>
       </nav>
     </header>
     <%= yield %>
+    <footer>
+      &copy; Mindful Consumer 2020
+    </footer>
   </body>
 </html>
