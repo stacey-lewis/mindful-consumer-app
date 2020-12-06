@@ -106,42 +106,42 @@ puts "adding consumer values ... "
 
 value1 = ConsumerValue.create!(
   name: "Plastic-free",
-  image: "/assets/icons/plastic-free.png"
+  image: "/assets/icons/value_plastic-free.png"
 )
 
 value2 = ConsumerValue.create!(
   name: "Support local",
-  image: ""
+  image: "/assets/icons/value_spport_local.png"
 )
 
 value3 = ConsumerValue.create!(
   name: "Reuse / upcycle",
-  image: ""
+  image: "/assets/icons/value_recycle_resuse.png"
 )
 
 value4 = ConsumerValue.create!(
   name: "Sharing / loaning",
-  image: ""
+  image: "/assets/icons/value_share_loan.png"
 )
 
 value5 = ConsumerValue.create!(
   name: "Make your own (DIY)",
-  image: ""
+  image: "/assets/icons/value_diy_make_your_own.png"
 )
 
 value6 = ConsumerValue.create!(
   name: "Environmental resources",
-  image: ""
+  image: "/assets/icons/value_environmental_resources.png"
 )
 
 value7 = ConsumerValue.create!(
   name: "Grow your own",
-  image: ""
+  image: "/assets/icons/value_grow_own.png"
 )
 
 value8 = ConsumerValue.create!(
   name: "Community",
-  image: ""
+  image: "/assets/icons/value_community.png"
 )
 
 puts "Added #{ConsumerValue.count} categories"
@@ -156,46 +156,86 @@ puts "adding consumer categories ... "
 
 cat1 = ConsumerCategory.create!(
   name: "Energy",
-  image: ""
+  image: "/assets/icons/cat_energy.png"
 )
 
 cat2 = ConsumerCategory.create!(
   name: "Grocery",
-  image: ""
+  image: "/assets/icons/cat_grocery.png"
 )
 cat3 = ConsumerCategory.create!(
   name: "Meat / Poultry",
-  image: ""
+  image: "/assets/icons/cat_meat_poultry.png"
 )
 
 cat4 = ConsumerCategory.create!(
   name: "Dairy",
-  image: ""
+  image: "/assets/icons/cat_dairy.png"
 )
 
 cat5 = ConsumerCategory.create!(
   name: "Garden / Outdoors",
-  image: ""
+  image: "/assets/icons/cat_garden_outdoor.png"
 )
 
 cat6 = ConsumerCategory.create!(
   name: "Household",
-  image: ""
+  image: "/assets/icons/cat_household.png"
 )
 
 cat7 = ConsumerCategory.create!(
   name: "Bathroom",
-  image: ""
+  image: "/assets/icons/cat_bathroom.png"
 )
 
 cat8 = ConsumerCategory.create!(
   name: "Laundry",
-  image: ""
+  image: "/assets/icons/cat_laundry.png"
 )
 
 cat9 = ConsumerCategory.create!(
   name: "Homewares",
-  image: ""
+  image: "/assets/icons/cat_homewares.png"
+)
+
+cat10 = ConsumerCategory.create!(
+  name: "Clothing / Fashion",
+  image: "/assets/icons/cat_clothing_fashion.png"
 )
 
 puts "Added #{ConsumerCategory.count} categories"
+
+
+#==============================================================
+#Create ConsumerCategory >--<
+
+vendor1.consumer_categories << cat2 << cat6 << cat7 << cat8
+
+puts "Vendor '#{vendor1.vendor_name}' is in the following categories: '#{vendor1.consumer_categories.pluck(:name).join("', '")}'"
+puts "Category '#{cat2.name}' is assigned to the following vendors: '#{cat2.registered_vendors.pluck(:vendor_name).join("', '")}'"
+
+
+user1.consumer_categories << cat6 << cat7 << cat10
+user2.consumer_categories << cat1 << cat7 << cat3 << cat2
+user3.consumer_categories << cat3 << cat2 << cat1
+
+
+puts "User '#{user1.name}' is interested in the following categories: '#{user1.consumer_categories.pluck(:name).join("', '")}'"
+puts "Categories '#{cat3.name}' is assigned to the following users: '#{cat3.registered_users.pluck(:name).join("', '")}'"
+
+
+#==============================================================
+#Create ConsumerValue >--<
+
+vendor2.consumer_values << value1 << value3
+
+puts "Vendor '#{vendor2.vendor_name}' supports the following values: '#{vendor2.consumer_values.pluck(:name).join("', '")}'"
+puts "Value '#{value3.name}' is assigned to the following vendors: '#{value3.registered_vendors.pluck(:vendor_name).join("', '")}'"
+
+
+user1.consumer_values << value6 << value7 << value8
+user2.consumer_values << value1 << value7 << value3 << value2
+user3.consumer_values << value3 << value2 << value1
+
+puts "User '#{user1.name}' supports the following values: '#{user1.consumer_values.pluck(:name).join("', '")}'"
+puts "Value '#{value3.name}' is assigned to the following users: '#{value3.registered_users.pluck(:name).join("', '")}'"

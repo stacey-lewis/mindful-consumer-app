@@ -14,6 +14,8 @@ class RegisteredVendorsController < ApplicationController
   end
 
   def edit
+    @registered_vendor = RegisteredVendor.find params[:id]
+    
   end
 
   def update
