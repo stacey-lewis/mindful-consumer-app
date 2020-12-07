@@ -69,13 +69,16 @@ vendor1 = RegisteredVendor.create!(
   logo: "/assets/seed_logo_source_bulk.png",
   background_image: "https://thesourcebulkfoods.com.au/wp-content/uploads/2018/05/stores-bg-e1533709708832.jpg",
   hero_image: "https://thesourcebulkfoods.com.au/wp-content/uploads/2020/05/TSBF_Loyalty-Program-Carousel_950x420px.jpg",
-  opening_hours:
-  "Mon - Fri: 9:30am – 6:00pm
-  Sat: 9:00am – 5:00pm
-  Sun: 10:00am – 5:00pm
-  Public holiday trading hours may vary, please contact the store directly to conﬁrm.",
-  bio: "The Source Bulk Foods was born in 2012 from our belief that unpackaged food should be easier to access and a smaller carbon footprint could be achieved every time you shop."
+  opening_hours: "",
+  bio: "The Source Bulk Foods was born in 2012 from our belief that unpackaged food should be easier to access and a smaller carbon footprint could be achieved every time you shop.",
+  password: "password123",
+  email_address: "brunswick@thesourcebulkfoods.com.au",
+  instagram: "https://www.instagram.com/thesourcebrunswick/",
+  facebook: "https://www.facebook.com/thesourcebulkfoodsbrunswick",
+  online_store: true
 )
+
+p vendor1
 
 
 vendor2 = RegisteredVendor.create!(
@@ -91,7 +94,12 @@ vendor2 = RegisteredVendor.create!(
   hero_image: "/assets/seed_hero_image_zero waste food store.jpg",
   opening_hours:
   "Online store only",
-  bio: "Zero Waste Store is an online supermarket for all your plastic free, planet friendly, toxin free items. We package up your shopping cart using 100% plastic free materials for delivery to your door."
+  bio: "Zero Waste Store is an online supermarket for all your plastic free, planet friendly, toxin free items. We package up your shopping cart using 100% plastic free materials for delivery to your door.",
+  password: "password123",
+  email_address: "hello@something.com",
+  instagram: "",
+  facebook: "",
+  online_store: true
 )
 
 puts "Added #{RegisteredVendor.count} vendors"

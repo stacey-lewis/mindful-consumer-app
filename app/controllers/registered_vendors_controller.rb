@@ -4,9 +4,14 @@ class RegisteredVendorsController < ApplicationController
   end
 
   def create
-    registered_vendor = RegisteredVendor.create registered_vendor_params
-    registered_vendor.save
-    redirect_to registered_vendor_path(registered_vendor.id)
+    @registered_vendor = RegisteredVendor.create registered_vendor_params
+    if @registered_vendor.persisted?
+      session[:user_id] = @registered_vendor.id
+      redirect_to root_path
+    else
+      #go to the new form because we want to be able to pre-fill with what they entered.
+      render :new
+    end
   end
 
   def index
@@ -35,7 +40,7 @@ class RegisteredVendorsController < ApplicationController
   end
 
   def registered_vendor_params
-    params.require(:registered_vendor).permit(:vendor_name, :phone_number, :address, :suburb, :state, :postcode, :website, :logo, :background_image, :hero_image, :opening_hours, :bio)
+    params.require(:registered_vendor).permit(:vendor_name, :phone_number, :address, :suburb, :state, :postcode, :website, :logo, :background_image, :hero_image, :opening_hours, :bio, :password, :password_confirmation, :email_address, :online_store, :instagram, :facebook)
   end
 
 
