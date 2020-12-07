@@ -1,3 +1,11 @@
+
+/* Application CSS ================================ */
+
+
+
+
+
+
 /* * {
   border: 1pt solid orange;
 } */
@@ -17,8 +25,13 @@ header {
 
 h1 {
   text-transform: lowercase;
-  fo
+  text-decoration: none;
 }
+
+a:active.header_title, a:visited.header_title {
+    text-decoration: none;
+}
+
 
 
 nav {
@@ -49,6 +62,9 @@ footer{
 }
 
 
+a:-webkit-any-link {
+  cursor: pointer;
+}
 
 
 /* #=============vendor index page======================== */
