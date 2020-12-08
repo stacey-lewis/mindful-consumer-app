@@ -124,7 +124,7 @@ value2 = ConsumerValue.create!(
 
 value3 = ConsumerValue.create!(
   name: "Reuse / upcycle",
-  image: "/assets/icons/value_recycle_resuse.png"
+  image: "/assets/icons/value_recycle_reuse.png"
 )
 
 value4 = ConsumerValue.create!(

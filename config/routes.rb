@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :registered_users
   resources :registered_vendors
 
+  get '/vendors/filter' => 'registered_vendors#filter', as: "filter"
+
   #Login/logout routes
   get '/login' => 'session#new' #showing the login form
   post '/login' => 'session#create' #form submits to here, performs login, redirects

@@ -118,7 +118,11 @@ a:-webkit-any-link {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(30%, 1fr));
 }
-
+.show_menu > li {
+display: inline-block;
+padding-left: 20px;
+list-style-type: none;
+}
 
 .vendor_show_background {
   width: 60%;

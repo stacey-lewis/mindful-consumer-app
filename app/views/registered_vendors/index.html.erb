@@ -1,8 +1,24 @@
 <h2>Directory</h2>
-<h3>Insert search functionality</h3>
+
+<div class="filter_menu">
+
+
+<p>Filter results:</p>
+<%= form_with url: filter_path, local: true, method: "get" do |f| %>
+<p>Categories</p>
+<%= f.collection_check_boxes(:consumer_category_ids, ConsumerCategory.all, :id, :name, include_hidden: false) %>
+<p>Values</p>
+<%= f.collection_check_boxes(:consumer_value_ids, ConsumerValue.all, :id, :name, include_hidden: false) %>
+<br>
+<%= f.submit "Search"%>
+<% end %>
+
+</div>
+
 
 
 <div class="vendor">
+
 
   <div class="vendor_result_list">
   <% @registered_vendors.each do |v| %>

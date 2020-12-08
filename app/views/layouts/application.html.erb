@@ -23,8 +23,8 @@
           <li><%=link_to "About", about_path  %></li>
           <li><%=link_to "Contact", contact_path  %></li>
           <li>
-            <% if @registered_vendor.present? %>
-              <%= link_to "Logout", login_path, :method => 'delete' %> <em>Welcome, <%= @registered_vendor.vendor_name %></em>
+            <% if @current_user.present? %>
+              <%= link_to "Logout", login_path, :method => 'delete' %> <em>Welcome, <%= @current_user.vendor_name %></em>
             <% else %>
               <%= link_to "Log in", login_path %>
             <% end %>
