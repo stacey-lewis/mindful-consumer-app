@@ -2,12 +2,18 @@
 
 <div class="filter_menu">
 
-
 <p>Filter results:</p>
-<%= form_with url: filter_path, local: true, method: "get" do |f| %>
 <p>Categories</p>
+<%= form_with url: filter_path, local: true, method: "get" do |f| %>
 <%= f.collection_check_boxes(:consumer_category_ids, ConsumerCategory.all, :id, :name, include_hidden: false) %>
+
+<%= f.submit "Search"%>
+<% end %>
+
+
+
 <p>Values</p>
+<%= form_with url: filter_path, local: true, method: "get" do |f| %>
 <%= f.collection_check_boxes(:consumer_value_ids, ConsumerValue.all, :id, :name, include_hidden: false) %>
 <br>
 <%= f.submit "Search"%>

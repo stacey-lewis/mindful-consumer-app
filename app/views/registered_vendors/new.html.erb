@@ -1,5 +1,14 @@
 <h2>Create new vendor profile</h2>
 
+<% if @registered_vendor.errors.full_messages.any? %> <!-- any? means length > 0 -->
+  <strong>Oops! That didn't work: </strong>
+  <ul>
+    <% @registered_vendor.errors.full_messages.each do |e| %>
+    <li><%= e %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @registered_vendor, local: true, html: { multipart: true } do |f| %>
 
 <%= f.label :vendor_name %>

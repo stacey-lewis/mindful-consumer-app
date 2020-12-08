@@ -50,17 +50,21 @@ class RegisteredVendorsController < ApplicationController
     if registered_vendor.id != @current_user.id
       redirect_to login_path
       return
-    else
-      params[:registered_vendor][:background_image].present?
+    end
+
+    registered_vendor.attributes = registered_vendor_params
+    if params[:registered_vendor][:background_image].present?
       response = Cloudinary::Uploader.upload params[:registered_vendor][:background_image]
       p response
       registered_vendor.background_image = response["public_id"]
+    else
+      #if we don't do this, then setting the .attributes above puts form junk into this field
+      registered_vendor.background_image=nil
+    end #if
+    registered_vendor.save
+    redirect_to registered_vendor_path(registered_vendor.id)
 
-      registered_vendor.save registered_vendor_params
-      redirect_to registered_vendor_path(registered_vendor.id)
-    end
-
-  end
+  end #end update
 
   def destroy
     registered_vendor = RegisteredVendor.find params[:id]
@@ -69,11 +73,25 @@ class RegisteredVendorsController < ApplicationController
   end
 
   def filter
-    # raise "hell"
-    # enum category_type: [:home, :office, :mobile, :fax]
-      # @filter = RegisteredVendor.consumer_values.where (name: params[:category_type])
+    if params[:consumer_category_ids].present?
 
-    #define how a form will filter results ... check box dropdown
+      consumer_category_ids = params[:consumer_category_ids]
+
+      @vendors = RegisteredVendor.joins(:consumer_categories).where(consumer_categories: {id: consumer_category_ids}).group('registered_vendors.id').having('count(*) = ?',consumer_category_ids.count)
+      #
+    end
+
+    if params[:consumer_value_ids].present?
+      consumer_value_ids = params[:consumer_value_ids]
+
+      @vendors = RegisteredVendor.joins(:consumer_values).where(consumer_values: {id: consumer_value_ids}).group('registered_vendors.id').having('count(*) = ?',consumer_value_ids.count)
+    end
+
+    if @vendors == nil
+      flash[:error] = "Sorry, nothing fits that criteria."
+      redirect_to registered_vendors_path
+    end
+
   end
 
 

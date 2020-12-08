@@ -1,10 +1,26 @@
 <h2>Directory</h2>
 
-<p>Filter results:</p>
+<div class="filter_menu">
+<p>Categories</p>
+<%= form_with url: filter_path, local: true, method: "get" do |f| %>
+<%= f.collection_check_boxes(:consumer_category_ids, ConsumerCategory.all, :id, :name, include_hidden: false) %>
+
+<%= f.submit "Search"%>
+<% end %>
+
+
+<p>Values</p>
+<%= form_with url: filter_path, local: true, method: "get" do |f| %>
+<%= f.collection_check_boxes(:consumer_value_ids, ConsumerValue.all, :id, :name, include_hidden: false) %>
+<br>
+<%= f.submit "Search"%>
+<% end %>
+
+</div>
 
 <div class="vendor">
   <div class="vendor_result_list">
-  <% @registered_vendors.each do |v| %>
+  <% @vendors.each do |v| %>
 
     <p class="vendor_list">
       <%= link_to v.vendor_name, registered_vendor_path(v.id)%><br>
@@ -15,3 +31,6 @@
     <% end %>
   </div>
 </div>
+
+
+<!-- RegisteredVendor.joins(:consumer_categories).where(consumer_categories: {id: consumer_category_ids}).group('registered_vendors.id').having('count(*) = ?',consumer_category_ids.count) -->
