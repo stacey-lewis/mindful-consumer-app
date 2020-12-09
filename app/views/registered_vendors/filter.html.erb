@@ -1,42 +1,56 @@
-<h2>Directory</h2>
-
-<div class="filter_menu">
-<p>Categories</p>
-<%= form_with url: filter_path, local: true, method: "get" do |f| %>
-<%= f.collection_check_boxes(:consumer_category_ids, ConsumerCategory.all, :id, :name, include_hidden: false) %>
-
-<%= f.submit "Search"%>
-<% end %>
 
 
-<p>Values</p>
-<%= form_with url: filter_path, local: true, method: "get" do |f| %>
-<%= f.collection_check_boxes(:consumer_value_ids, ConsumerValue.all, :id, :name, include_hidden: false) %>
-<br>
-<%= f.submit "Search"%>
-<% end %>
+<div class="body_filter_page">
 
-</div>
+  <div class="filter_menu">
+    <div class="filter_center">
 
-<div class="vendor">
-  <div class="vendor_result_list">
-  <% @vendors.each do |v| %>
+      <p>Filters:</p>
 
-    <p class="vendor_list">
-      <%= link_to v.vendor_name, registered_vendor_path(v.id)%><br>
-      <%=v.suburb%>, <%=v.state%>
-      <br><br>
-      <%= cl_image_tag v.logo %>
-    </p>
+      <p class="filter_heading">Categories</p>
+      <%= form_with url: filter_path, local: true, method: "get" do |f| %>
+        <%= f.collection_check_boxes(:consumer_category_ids, ConsumerCategory.all, :id, :name, include_hidden: false) do |b| %>
+          <%= b.label(class: "check_box") { b.check_box + b.text } %>
+        <% end %>
+        <br>
+        <%= f.submit "Filter"%>
+      <% end %>
+
+      <br>
+
+      <p class="filter_heading">Values</p>
+      <%= form_with url: filter_path, local: true, method: "get" do |f| %>
+        <%= f.collection_check_boxes(:consumer_value_ids, ConsumerValue.all, :id, :name, include_hidden: false) do |b| %>
+          <%= b.label(class: "check_box") { b.check_box + b.text } %>
+        <% end %>
+        <br>
+        <%= f.submit "Filter"%>
+      <% end %>
+
+    </div>
+  </div>
+
+  <div class="vendor">
+    <h2>Resources Directory</h2>
+    <div class="vendor_result_list">
+    <% @vendors.each do |v| %>
+
+      <p class="vendor_list">
+        <%= link_to v.vendor_name, registered_vendor_path(v.id)%><br>
+        <%=v.suburb%>, <%=v.state%>
+        <br><br>
+        <%= cl_image_tag v.logo %>
+      </p>
+      <% end %>
+    </div>
+    <% if flash[:error].present? %>
+      <br><strong class="filter_error">
+      <%= flash[:error] %></strong><br><br>
     <% end %>
   </div>
-</div>
 
-<% if flash[:error].present? %>
-<br>
-<strong class="filter_error">
-  <%= flash[:error] %>
-</strong>
-<br><br>
-<% end %>
-<!-- RegisteredVendor.joins(:consumer_categories).where(consumer_categories: {id: consumer_category_ids}).group('registered_vendors.id').having('count(*) = ?',consumer_category_ids.count) -->
+
+
+
+
+</div>

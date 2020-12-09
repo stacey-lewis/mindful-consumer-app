@@ -67,8 +67,43 @@ a:-webkit-any-link {
 }
 
 
-/* #=============vendor index page======================== */
+/* #=============vendor index / filter page======================== */
 
+.body_filter_page {
+  display: flex;
+}
+
+.filter_menu {
+  width: 20%;
+}
+
+.vendor {
+    flex: auto;
+}
+
+.filter_heading {
+  font-weight: 500;
+}
+
+.check_box, .filter_menu {
+  display: block;
+  text-align: left;
+}
+
+.check_box {
+  border: 1pt solid white;
+}
+
+.filter_center {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.filter_menu {
+  background-color: rgb(237, 237, 237);
+  padding: 20px;
+  margin-right: 20px;
+}
 
 .vendor_result_list {
   display: grid;

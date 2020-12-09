@@ -64,7 +64,7 @@
 <br>
 
 <%= f.label :online_store, "Has online store?" %>
-<%= f.check_box :online_store %> <br>
+<%= f.check_box :online_store, {checked: false}, checked_value = "true", unchecked_value = "false"  %> <br>
 <br>
 
 <%= f.collection_check_boxes(:consumer_category_ids, ConsumerCategory.all, :id, :name) %>
@@ -86,6 +86,12 @@
 
 <%= f.label :password_confirmation %>
 <%= f.password_field :password_confirmation%> <br>
+<br>
+
+<%= f.label :admin, "Is admin user for whole site?"%>
+<%# check_box(object_name, method, options = {}, checked_value = "1", unchecked_value = "0") %>
+<%= f.check_box :admin, {checked: false}, checked_value = "true", unchecked_value = "false"  %> <br>
+<p><strong><em>Note: admin user will be given access to whole site editing rights, and profile WILL NOT display in search results.</p></em></strong>
 <br>
 
 <%= f.submit "Create new vendor"%>

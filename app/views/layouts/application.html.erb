@@ -33,6 +33,10 @@
             <% end %>
           </li>
 
+            <% if @current_user.present? && @current_user.admin == false %>
+            <li><%=link_to "My Store Profile", registered_vendor_path(@current_user.id)  %></li>
+            <% end %>
+
 
         </ul>
       </nav>

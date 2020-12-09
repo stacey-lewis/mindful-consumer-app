@@ -1,39 +1,46 @@
-<h2>Directory</h2>
 
+<div class="body_filter_page">
 
-<div class="filter_menu">
-<p>Categories</p>
-<%= form_with url: filter_path, local: true, method: "get" do |f| %>
-<%= f.collection_check_boxes(:consumer_category_ids, ConsumerCategory.all, :id, :name, include_hidden: false) %>
+  <div class="filter_menu">
+    <div class="filter_center">
 
-<%= f.submit "Search"%>
-<% end %>
+      <p>Filters:</p>
 
+      <p class="filter_heading">Categories</p>
+      <%= form_with url: filter_path, local: true, method: "get" do |f| %>
+        <%= f.collection_check_boxes(:consumer_category_ids, ConsumerCategory.all, :id, :name, include_hidden: false) do |b| %>
+          <%= b.label(class: "check_box") { b.check_box + b.text } %>
+        <% end %>
+        <br>
+        <%= f.submit "Filter"%>
+      <% end %>
 
+      <br>
 
-<p>Values</p>
-<%= form_with url: filter_path, local: true, method: "get" do |f| %>
-<%= f.collection_check_boxes(:consumer_value_ids, ConsumerValue.all, :id, :name, include_hidden: false) %>
-<br>
-<%= f.submit "Search"%>
-<% end %>
+      <p class="filter_heading">Values</p>
+      <%= form_with url: filter_path, local: true, method: "get" do |f| %>
+        <%= f.collection_check_boxes(:consumer_value_ids, ConsumerValue.all, :id, :name, include_hidden: false) do |b| %>
+          <%= b.label(class: "check_box") { b.check_box + b.text } %>
+        <% end %>
+        <br>
+        <%= f.submit "Filter"%>
+      <% end %>
 
-</div>
-
-
-
-<div class="vendor">
-
-
-  <div class="vendor_result_list">
-  <% @registered_vendors.each do |v| %>
-
-    <p class="vendor_list">
-      <%= link_to v.vendor_name, registered_vendor_path(v.id)%><br>
-      <%=v.suburb%>, <%=v.state%>
-      <br><br>
-      <%= cl_image_tag v.logo %>
-    </p>
-    <% end %>
+    </div>
   </div>
+
+  <div class="vendor">
+    <h2>Resources Directory</h2>
+    <div class="vendor_result_list">
+      <% @registered_vendors.each do |v| %>
+        <p class="vendor_list">
+          <%= link_to v.vendor_name, registered_vendor_path(v.id)%><br>
+          <%=v.suburb%>, <%=v.state%>
+          <br><br>
+          <%= cl_image_tag v.logo %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+
 </div>

@@ -71,6 +71,15 @@
 <%= f.text_field :bio %> <br>
 <br>
 
+
+<%= f.label :password, "re-set password for account:" %>
+<%= f.password_field :password %> <br>
+<br>
+
+<%= f.label :password_confirmation %>
+<%= f.password_field :password_confirmation%> <br>
+<br>
+
 <%= f.submit%>
 
 <% end %>
