@@ -7,4 +7,17 @@ class RegisteredVendor < ApplicationRecord
 
   validates :email_address, :presence => true, :uniqueness => true
 
+  #geocoding
+  after_validation :geocode
+  #...if your address is broken into seperate columns:
+
+  def full_address
+    "#{address}, #{suburb}, #{state}, #{postcode}"
+  end
+  
+  geocoded_by :full_address
+
+
+  #One column address option:
+  # geocoded_by :address
 end

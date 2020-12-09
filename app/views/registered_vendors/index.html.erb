@@ -4,26 +4,26 @@
   <div class="filter_menu">
     <div class="filter_center">
 
-      <p>Filters:</p>
+      <h3>Filters:</h3>
 
-      <p class="filter_heading">Categories</p>
+      <h3 class="filter_heading">Categories</h3>
       <%= form_with url: filter_path, local: true, method: "get" do |f| %>
         <%= f.collection_check_boxes(:consumer_category_ids, ConsumerCategory.all, :id, :name, include_hidden: false) do |b| %>
           <%= b.label(class: "check_box") { b.check_box + b.text } %>
         <% end %>
         <br>
-        <%= f.submit "Filter"%>
+        <%= f.submit "Filter results", :class => "form_button"%>
       <% end %>
 
       <br>
 
-      <p class="filter_heading">Values</p>
+      <h3 class="filter_heading">Values</h3>
       <%= form_with url: filter_path, local: true, method: "get" do |f| %>
         <%= f.collection_check_boxes(:consumer_value_ids, ConsumerValue.all, :id, :name, include_hidden: false) do |b| %>
           <%= b.label(class: "check_box") { b.check_box + b.text } %>
         <% end %>
         <br>
-        <%= f.submit "Filter"%>
+        <%= f.submit "Filter results", :class => "form_button"%>
       <% end %>
 
     </div>
@@ -44,3 +44,42 @@
   </div>
 
 </div>
+
+<!--
+<div class="map">
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initMap&libraries=&v=weekly"
+  defer
+></script>
+<style >
+#map {
+  width: 50vw;
+  height: 50vw;
+}
+</style>
+
+<script>
+
+  const myLatLng = {lat: <%= @registered_vendors.last.latitude%>, lng: <%=@registered_vendors.last.longitude %>};
+
+  function initMap() {
+  // const myLatLng = { lat: -25.363, lng: 131.044 };
+
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: myLatLng,
+  });
+  new google.maps.Marker({
+    position: myLatLng,
+    map,
+    title: "Hello World!",
+  });
+}
+</script>
+
+
+<h2>Stores</h2>
+
+<div id="map"></div>
+
+</div> -->
