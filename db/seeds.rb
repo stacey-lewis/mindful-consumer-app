@@ -75,7 +75,8 @@ vendor1 = RegisteredVendor.create!(
   email_address: "brunswick@thesourcebulkfoods.com.au",
   instagram: "https://www.instagram.com/thesourcebrunswick/",
   facebook: "https://www.facebook.com/thesourcebulkfoodsbrunswick",
-  online_store: true
+  online_store: true,
+  admin: false
 )
 
 p vendor1
@@ -99,7 +100,31 @@ vendor2 = RegisteredVendor.create!(
   email_address: "hello@something.com",
   instagram: "",
   facebook: "",
-  online_store: true
+  online_store: false,
+  admin: false
+)
+
+
+admin = RegisteredVendor.create!(
+  vendor_name: "Admin Login",
+  phone_number: 04000000,
+  address: "",
+  suburb: "",
+  postcode: 3163,
+  state: "",
+  website: "",
+  logo: "",
+  background_image: "",
+  hero_image: "",
+  opening_hours:
+  "",
+  bio: "Admin User account",
+  password: "password123",
+  email_address: "admin@admin.com",
+  instagram: "",
+  facebook: "",
+  online_store: "",
+  admin: true
 )
 
 puts "Added #{RegisteredVendor.count} vendors"
@@ -119,7 +144,7 @@ value1 = ConsumerValue.create!(
 
 value2 = ConsumerValue.create!(
   name: "Support local",
-  image: "/assets/icons/value_spport_local.png"
+  image: "/assets/icons/value_support_local.png"
 )
 
 value3 = ConsumerValue.create!(
@@ -144,7 +169,7 @@ value6 = ConsumerValue.create!(
 
 value7 = ConsumerValue.create!(
   name: "Grow your own",
-  image: "/assets/icons/value_grow_own.png"
+  image: "/assets/icons/value_grow_your_own.png"
 )
 
 value8 = ConsumerValue.create!(
@@ -183,7 +208,7 @@ cat4 = ConsumerCategory.create!(
 
 cat5 = ConsumerCategory.create!(
   name: "Garden / Outdoors",
-  image: "/assets/icons/cat_garden_outdoor.png"
+  image: "/assets/icons/cat_garden_outdoors.png"
 )
 
 cat6 = ConsumerCategory.create!(

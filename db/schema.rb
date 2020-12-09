@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_053319) do
+ActiveRecord::Schema.define(version: 2020_12_08_104646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_053319) do
     t.string "facebook"
     t.boolean "online_store"
     t.string "password_digest"
+    t.boolean "admin"
   end
 
 end

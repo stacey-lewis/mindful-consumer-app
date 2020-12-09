@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/vendors/filter' => 'registered_vendors#filter', as: "filter"
 
+  get'/admin' => 'registered_vendors#admin'
+
   #Login/logout routes
   get '/login' => 'session#new' #showing the login form
   post '/login' => 'session#create' #form submits to here, performs login, redirects

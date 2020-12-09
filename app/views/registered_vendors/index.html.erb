@@ -1,8 +1,7 @@
 <h2>Directory</h2>
 
-<div class="filter_menu">
 
-<p>Filter results:</p>
+<div class="filter_menu">
 <p>Categories</p>
 <%= form_with url: filter_path, local: true, method: "get" do |f| %>
 <%= f.collection_check_boxes(:consumer_category_ids, ConsumerCategory.all, :id, :name, include_hidden: false) %>
@@ -33,7 +32,7 @@
       <%= link_to v.vendor_name, registered_vendor_path(v.id)%><br>
       <%=v.suburb%>, <%=v.state%>
       <br><br>
-      <%= image_tag v.logo %>
+      <%= cl_image_tag v.logo %>
     </p>
     <% end %>
   </div>

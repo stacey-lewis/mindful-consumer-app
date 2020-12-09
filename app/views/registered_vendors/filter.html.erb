@@ -26,11 +26,17 @@
       <%= link_to v.vendor_name, registered_vendor_path(v.id)%><br>
       <%=v.suburb%>, <%=v.state%>
       <br><br>
-      <%= image_tag v.logo %>
+      <%= cl_image_tag v.logo %>
     </p>
     <% end %>
   </div>
 </div>
 
-
+<% if flash[:error].present? %>
+<br>
+<strong class="filter_error">
+  <%= flash[:error] %>
+</strong>
+<br><br>
+<% end %>
 <!-- RegisteredVendor.joins(:consumer_categories).where(consumer_categories: {id: consumer_category_ids}).group('registered_vendors.id').having('count(*) = ?',consumer_category_ids.count) -->

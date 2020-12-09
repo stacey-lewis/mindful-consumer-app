@@ -64,7 +64,7 @@
 <br>
 
 <%= f.label :online_store, "Has online store?" %>
-<%= f.text_field :online_store %> <br>
+<%= f.check_box :online_store %> <br>
 <br>
 
 <%= f.collection_check_boxes(:consumer_category_ids, ConsumerCategory.all, :id, :name) %>
@@ -81,13 +81,13 @@
 <br>
 
 <%= f.label :password, "set password for account:" %>
-<%= f.text_field :password_field %> <br>
+<%= f.password_field :password %> <br>
 <br>
 
 <%= f.label :password_confirmation %>
 <%= f.password_field :password_confirmation%> <br>
 <br>
 
-<%= f.submit%>
+<%= f.submit "Create new vendor"%>
 
 <% end %>
