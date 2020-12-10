@@ -10,7 +10,11 @@
       <h3 class="filter_heading">Categories</h3>
       <%= form_with url: filter_path, local: true, method: "get" do |f| %>
         <%= f.collection_check_boxes(:consumer_category_ids, ConsumerCategory.all, :id, :name, include_hidden: false) do |b| %>
-          <%= b.label(class: "check_box") { b.check_box + b.text } %>
+            <% if params[:consumer_category_ids] !=nil%>
+              <%=b.label(class: "check_box") { b.check_box(checked: params[:consumer_category_ids].include?(b.object.id.to_s)) + b.text }%>
+            <% else %>
+            <%=b.label(class: "check_box"){ b.check_box + b.text }%>
+            <% end %>
         <% end %>
         <br>
         <%= f.submit "Filter", :class => "form_button"%>
@@ -21,7 +25,11 @@
       <h3 class="filter_heading">Values</h3>
       <%= form_with url: filter_path, local: true, method: "get" do |f| %>
         <%= f.collection_check_boxes(:consumer_value_ids, ConsumerValue.all, :id, :name, include_hidden: false) do |b| %>
-          <%= b.label(class: "check_box") { b.check_box + b.text } %>
+            <% if params[:consumer_value_ids] !=nil%>
+              <%=b.label(class: "check_box") { b.check_box(checked: params[:consumer_value_ids].include?(b.object.id.to_s)) + b.text }%>
+            <% else %>
+            <%=b.label(class: "check_box"){ b.check_box + b.text }%>
+            <% end %>
         <% end %>
         <br>
         <%= f.submit "Filter", :class => "form_button"%>

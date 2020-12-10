@@ -1,6 +1,15 @@
 
 <h2>Create your profile</h2>
 
+<% if @registered_user.errors.full_messages.any? %> <!-- any? means length > 0 -->
+  <strong>Oops! That didn't work </strong>
+  <ul>
+    <% @registered_user.errors.full_messages.each do |e| %>
+    <li><%= e %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @registered_user, local: true, html: { multipart: true } do |f| %>
 
 <%= f.label :name %>

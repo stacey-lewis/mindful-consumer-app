@@ -110,6 +110,7 @@ class RegisteredVendorsController < ApplicationController
   end #destroy
 
   def filter
+
     if params[:consumer_category_ids].present?
       consumer_category_ids = params[:consumer_category_ids]
       @vendors = RegisteredVendor.joins(:consumer_categories).where(consumer_categories: {id: consumer_category_ids}).group('registered_vendors.id').having('count(*) = ?',consumer_category_ids.count)

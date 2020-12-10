@@ -8,7 +8,7 @@
      <li><%= link_to "Edit this page", edit_registered_user_path %> </li>
   <% end %>
   <% if @current_user.present? && @registered_user.id == @current_user.id%>
-     <li><%= link_to "Delete", registered_user_path, method: "DELETE" %> </li>
+     <li><%= link_to "Delete my profile", registered_user_path, method: "DELETE" %> </li>
   <% end %>
 </ul>
 
@@ -19,7 +19,13 @@
   <p>Phone number: <%=@registered_user.phone_number%></p>
   <p>Postcode: <%=@registered_user.postcode%></p>
   <p>State: <%=@registered_user.state%></p>
-  <p>Opted in for emails: <%=@registered_user.opt_in_for_emails%></p><br>
+  <p>Opted in for email updates:
+    <% if @registered_user.opt_in_for_emails%>
+      <%= "yes" %>
+    <% else %>
+      <%= "no" %>
+    <% end %>
+  </p><br>
 </div>
 
 <div class="values_cat_users">
