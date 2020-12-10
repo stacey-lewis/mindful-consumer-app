@@ -33,12 +33,21 @@
     <h2>Resources Directory</h2>
     <div class="vendor_result_list">
       <% @registered_vendors.each do |v| %>
-        <p class="vendor_list">
+        <div class="vendor_list">
           <%= link_to v.vendor_name, registered_vendor_path(v.id)%><br>
           <%=v.suburb%>, <%=v.state%>
           <br><br>
           <%= cl_image_tag v.logo %>
-        </p>
+
+        <ul class= "vendor_index_tags">
+          <% v.consumer_values.each do |val| %>
+            <li> <%= val.name %> </li>
+          <% end %>
+          <% v.consumer_categories.each do |val| %>
+            <li> <%= val.name %> </li>
+          <% end %>
+        </ul>
+      </div>
       <% end %>
     </div>
   </div>
