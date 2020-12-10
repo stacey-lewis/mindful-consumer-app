@@ -1,0 +1,54 @@
+
+<%= form_with model: @registered_user, local: true, html: { multipart: true } do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %> <br>
+  <br>
+
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number %> <br>
+  <br>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %> <br>
+  <br>
+
+  <%= f.label :suburb %>
+  <%= f.text_field :suburb %> <br>
+  <br>
+
+  <%= f.label :state %>
+  <%= f.text_field :state %> <br>
+  <br>
+
+  <%= f.label :postcode %>
+  <%= f.text_field :postcode %> <br>
+  <br>
+
+
+  <%= f.label :opt_in_for_emails, "Would you like to subscribe to email updates about our site and topics that may be relevant to you?" %>
+  <%= f.check_box :opt_in_for_emails, {checked: false}, checked_value = "true", unchecked_value = "false"  %> <br>
+  <br>
+
+  <p>In what ways are you looking to step up your sustainability game?</p>
+
+  <%= f.collection_check_boxes(:consumer_value_ids, ConsumerValue.all, :id, :name) %>
+  <br>
+  <br>
+
+  <p>And is there a particular area of your life or home you want to focus on for now? </p>
+  <%= f.collection_check_boxes(:consumer_category_ids, ConsumerCategory.all, :id, :name) %>
+  <br>
+  <br>
+  <br>
+  <%= f.label :password, "Password for account:" %>
+  <%= f.password_field :password %> <br>
+  <br>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation%> <br>
+  <br>
+
+  <%= f.submit "Save", class: "user_create_button"%>
+
+<% end %>

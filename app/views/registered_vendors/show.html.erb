@@ -1,8 +1,7 @@
 
 <div class="vendor_title">
   <ul class="show_menu">
-
-    <% if @current_user.has_attribute?(:vendor_name) %>
+    <% if @current_user.present? && @current_user.has_attribute?(:vendor_name) %>
       <% if (@current_user.present? && @registered_vendor.id == @current_user.id) || @current_user.present? && @current_user.admin%>
          <li><%= link_to "Edit this page", edit_registered_vendor_path %> </li>
       <% end %>
@@ -10,47 +9,57 @@
          <li><%= link_to "Delete", registered_vendor_path, method: "DELETE" %> </li>
       <% end %>
     <% end %>
-
   </ul>
-
-
-  <p><%= cl_image_tag @registered_vendor.logo, class: "vendor_show_logo", alt: @registered_vendor.vendor_name%></p>
-  <h2><%=@registered_vendor.vendor_name%></h2>
-  <h3><%=@registered_vendor.suburb %></h3>
 </div>
 
-<div>
-  <p><%= @registered_vendor.bio %></p>
-  <%= cl_image_tag @registered_vendor.background_image, class: "vendor_show_background" %>
-</div>
+<div class="vendor_page_container">
 
-<p><strong>Address:</strong>
-  <%= @registered_vendor.address %>, <%= @registered_vendor.suburb %>, <%= @registered_vendor.state %>, <%= @registered_vendor.postcode %>
-</p>
-<br>
-<p><%= @registered_vendor.opening_hours %></p>
-<p><%= link_to @registered_vendor.website, @registered_vendor.website, target: "_blank" %></p>
-<br>
-
-
-<div class="values_cat_container">
-  <h3>Values</h3>
-  <div class="vendor_value_list">
-    <% @registered_vendor.consumer_values.each do |val| %>
-      <div class="vendor_value_list_item">
-        <%= val.name %><br> <%= image_tag val.image %>
+  <div class="card">
+    <div class="vendor_logo_container side_1">
+      <p><%= cl_image_tag @registered_vendor.logo, class: "vendor_show_logo", alt: @registered_vendor.vendor_name%></p>
+      <h2 class="side_1 vendor_name_header"><%=@registered_vendor.vendor_name%></h2>
+      <div class="vendor_details_container side_1">
+        <p><strong>Address:</strong>
+          <%= @registered_vendor.address %>, <%= @registered_vendor.suburb %>, <%= @registered_vendor.state %>, <%= @registered_vendor.postcode %>
+        </p>
+        <p>Email: <%= @registered_vendor.email_address %></p>
+        <p>Phone number: <%= @registered_vendor.phone_number %></p>
+        <br>
+        <p><%= link_to @registered_vendor.website, @registered_vendor.website, target: "_blank" %></p>
+        <br>
       </div>
-    <% end %>
+    </div>
+
+    <div class="store_description">
+
+
+
+      <div class="values_cat_container">
+        <!-- <h3>Values</h3> -->
+        <div class="vendor_value_list">
+          <% @registered_vendor.consumer_values.each do |val| %>
+            <div class="vendor_value_list_item">
+              <%= val.name %><br> <%= image_tag val.image %>
+            </div>
+          <% end %>
+        </div>
+
+        <br>
+        <!-- <h3>Categories</h3> -->
+          <div class="vendor_cat_list">
+            <% @registered_vendor.consumer_categories.each do |cat| %>
+              <div class="vendor_cat_list_item">
+                <%= cat.name %><br> <%= image_tag cat.image %>
+              </div>
+            <% end %>
+          </div>
+      </div>
+      <div class="bio_container">
+        <p><%= @registered_vendor.bio %></p>
+      </div>
+    </div>
   </div>
 
-  <br>
-  <h3>Categories</h3>
-    <div class="vendor_cat_list">
-      <% @registered_vendor.consumer_categories.each do |cat| %>
-        <div class="vendor_cat_list_item">
-          <%= cat.name %><br> <%= image_tag cat.image %>
-        </div>
-      <% end %>
-    </div>
+  <%= cl_image_tag @registered_vendor.background_image, class: "vendor_show_background" %>
+
 </div>
-<!-- Add in icons of what they offer -->

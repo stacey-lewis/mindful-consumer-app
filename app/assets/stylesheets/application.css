@@ -49,10 +49,6 @@ nav {
   font-size: 18px;
 }
 
-.secondary_nav {
-
-}
-
 a:link, a:visited {
     text-decoration: none;
     color: black;
@@ -68,20 +64,15 @@ a:hover {
   display: inline-block;
   padding: 0 20px;
   list-style-type: none;
-
-
-  /* position: absolute; */
 }
 
 .menu {
   padding: 0;
-
 }
 
-footer{
+footer {
   margin-top: 50px;
   text-align: center;
-
 }
 
 
@@ -111,8 +102,6 @@ a:-webkit-any-link {
   border-radius: 2px 20px 2px;
   color: grey;
   font-size: 16px;
-;
-  /* font-weight: 500; */
 }
 
 .check_box, .filter_menu {
@@ -121,42 +110,36 @@ a:-webkit-any-link {
 }
 
 .check_box {
-  /* border: 1pt solid lightgrey; */
-  /* background-color: rgb(245, 245, 245); */
   padding: 1px;
   margin: 1px;
-
 }
 
 .filter_center {
   width: 200px;
   margin: 0 auto;
 }
+
 submit {
   background-color: rgb(245, 245, 245);
   border: none;
 }
 
 .filter_menu {
-  /* background-color: rgb(237, 237, 237); */
   padding: 20px;
   margin-right: 20px;
   border-right: 1px solid rgb(215, 215, 215);
   min-width: 200px;
-  ;
-
 }
 
 .vendor_result_list {
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(20%, 1fr));
-
-
+  text-transform: uppercase;
 }
+
 .vendor_list {
   list-style-type: none;
   text-align: center;
-  /* height: 200px; */
   padding: 20px;
   margin: 20px;
   background-color: rgb(250, 250, 250);
@@ -185,18 +168,19 @@ submit {
   }
 }
 
-
 @media (max-width: 800px) {
   .vendor_result_list {
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(90%, 1fr));
   }
 }
+
 .vendor_index_tags {
   text-align: center;
   margin: 0;
   padding: 5px 0;
 }
+
 .vendor_index_tags > li {
   display: inline-block;
   padding: 2px;
@@ -204,6 +188,7 @@ submit {
   border-radius: 5%;
   background-color: rgb(235, 242, 244);
   font-size: 14px;
+  text-transform: lowercase;
 }
 
 /* #=============vendor show page======================== */
@@ -211,6 +196,7 @@ submit {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(30%, 1fr));
 }
+
 .show_menu > li {
 display: inline-block;
 padding-left: 20px;
@@ -218,36 +204,71 @@ list-style-type: none;
 }
 
 .vendor_show_background {
-  width: 60%;
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  object-fit: cover;
+  z-index: -1;
+  left: 0;
+  height: 650px;
+}
+
+.card {
+  display: flex;
+  position: absolute;
+  width: calc(100% - 80px);
+  background-color: rgba(255, 255, 255, 0.66);
+  z-index: 1;
+  height: 60%;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-40%);
+}
+.vendor_name_header {
+  text-transform: uppercase;
 }
 
 .vendor_show_logo {
 max-height: 125px;
+border-radius: 5px;
+}
+
+.store_description {
+  margin: 20px;
+  /* margin-top: 100px; */
+  background-color: rgba(255, 255, 255, 0.66);
+  border-radius: 10px;
+}
+
+.bio_container {
+  padding: 0 50px;
 }
 
 .vendor_value_list_item, .vendor_cat_list_item {
   list-style-type: none;
   text-align: center;
-  /* height: 250px; */
   padding: 20px;
+  margin: 20px;
+}
+.vendor_logo_container {
+  width: 50%;
   margin: 20px;
 }
 
 .vendor_value_list_item > img , .vendor_cat_list_item > img {
-  max-height: 150px;
+  max-height: 50px;
 }
 
 .values_cat_container {
   padding: 0 20%;
   text-align: center;
-
 }
 
 .vendor_cat_list, .vendor_value_list {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(20%, 1fr));
   justify-items: center;
-  background-color: rgb(240, 240, 240);
+  /* background-color: rgb(240, 240, 240); */
   grid-auto-rows: auto;
 }
 
@@ -258,21 +279,15 @@ max-height: 125px;
 /* =========home page ========================= */
 
 .hero_image_home {
-  /* width: 90%; */
   position: relative;
   width: 100%;
-  /* height: 80%; */
-  /* object-fit: cover; */
 }
 
 .hero_image_home > img {
   width: 100%;
   height: 400px;
-    /* position: relative; */
-  /* height: 70%; */
   object-fit: cover;
 }
-
 
 /* ===============profile page=================== */
 
@@ -312,7 +327,6 @@ margin: 0 auto;
 
 .user_cat_list, .user_value_list {
   display: grid;
-  /* justify-content: space-around; */
   grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: center;
 }
@@ -324,7 +338,6 @@ margin: 0 auto;
 .user_cat_list_item > p, .user_value_list_item > p {
   font-size: 10pt;
 }
-
 
 .show_user_menu > li {
   display: inline-block;
