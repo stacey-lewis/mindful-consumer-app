@@ -1,54 +1,64 @@
 
 <h2>Welcome <%= @registered_user.name %></h2>
 
-<h3>Your account details:</h3>
+<div class="user_profile">
 
-<ul class="show_user_menu">
-  <% if @current_user.present? && @registered_user.id == @current_user.id%>
-     <li><%= link_to "Edit this page", edit_registered_user_path %> </li>
-  <% end %>
-  <% if @current_user.present? && @registered_user.id == @current_user.id%>
-     <li><%= link_to "Delete my profile", registered_user_path, method: "DELETE" %> </li>
-  <% end %>
-</ul>
 
-<div class="user_details">
-  <p>Name: <%=@registered_user.name%></p>
-  <p>Email address: <%=@registered_user.email%></p>
-  <p>Suburb: <%=@registered_user.suburb%></p>
-  <p>Phone number: <%=@registered_user.phone_number%></p>
-  <p>Postcode: <%=@registered_user.postcode%></p>
-  <p>State: <%=@registered_user.state%></p>
-  <p>Opted in for email updates:
-    <% if @registered_user.opt_in_for_emails%>
-      <%= "yes" %>
-    <% else %>
-      <%= "no" %>
-    <% end %>
-  </p><br>
-</div>
+  <div class="user_details">
+      <!-- placeholder for profile picture -->
+    <div class="profile_picture_container"></div>
 
-<div class="values_cat_users">
-
-  <h3>These are the ways you are interesting in stepping up your sustainability:</h3>
-
-  <div class="user_value_list">
-    <% @registered_user.consumer_values.each do |val| %>
-      <div class="user_value_list_item">
-        <%= val.name %><br> <%= image_tag val.image %>
-      </div>
-    <% end %>
+    <div class="user_details"><br>
+      <p>Name: <%=@registered_user.name%></p>
+      <p>Email address: <%=@registered_user.email%></p>
+      <p>Location: <%=@registered_user.suburb%>, <%=@registered_user.state%>, <%=@registered_user.postcode%></p>
+      <p>Phone number: <%=@registered_user.phone_number%></p>
+      <p>Opted in for email updates:
+        <% if @registered_user.opt_in_for_emails%>
+          <%= "yes" %>
+        <% else %>
+          <%= "no" %>
+        <% end %>
+      </p><br>
+    </div>
   </div>
 
-  <br>
-  <h3>Aspects of your home / life that you want to focus your sustainability efforts:</h3>
-    <div class="user_cat_list">
-      <% @registered_user.consumer_categories.each do |cat| %>
-        <div class="user_cat_list_item">
-          <%= cat.name %><br> <%= image_tag cat.image %>
+  <div class="values_cat_users">
+
+    <h3>Ways you are interesting in stepping up your sustainability:</h3><br>
+
+    <div class="user_value_list">
+      <% @registered_user.consumer_values.each do |val| %>
+        <div class="user_value_list_item">
+           <%= image_tag val.image %><p><%= val.name %></p>
         </div>
       <% end %>
     </div>
+
+    <br>
+    <h3>Sustainability home / life focus:</h3><br>
+    <div class="user_cat_list">
+      <% @registered_user.consumer_categories.each do |cat| %>
+        <div class="user_cat_list_item">
+           <%= image_tag cat.image %><p><%= cat.name %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <ul class="show_user_menu">
+      <% if @current_user.present? && @registered_user.id == @current_user.id%>
+         <li><%= link_to "Edit profile", edit_registered_user_path %> </li>
+      <% end %>
+      <% if @current_user.present? && @registered_user.id == @current_user.id%>
+         <li><%= link_to "Delete profile", registered_user_path, method: "DELETE" %> </li>
+      <% end %>
+    </ul>
+
+  </div>
+
+
+
+
 </div>
 
 <div class="user_recommendations">
