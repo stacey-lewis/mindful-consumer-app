@@ -36,7 +36,7 @@
           <% else %>
             <li><%= link_to "Store log in", login_path %></li> |
             <li><%= link_to "Log in", login_user_path %></li> |
-            <li><%= link_to "Sign up", new_registered_user_path %></li> 
+            <li><%= link_to "Sign up", new_registered_user_path %></li>
           <% end %>
         </ul>
 
@@ -54,7 +54,7 @@
             <% if @current_user.present? %>
               <% if @current_user.has_attribute?(:admin) %>
                 <% if @current_user.admin%>
-                  <li><%=link_to "Add Vendor", registered_vendors_path  %></li>
+                  <li><%=link_to "Add Vendor", new_registered_vendor_path  %></li>
                 <% end %>
               <% end %>
             <% end %>

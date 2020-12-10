@@ -1,7 +1,7 @@
 class RegisteredVendorsController < ApplicationController
 
   before_action :check_for_vendor_login, :only => [:edit, :update]
-  before_action :check_for_vendor_login, :only => [:destroy, :new]
+  before_action :check_for_admin, :only => [:destroy, :new]
 
   def admin
     if @current_user.admin == false
@@ -47,7 +47,11 @@ class RegisteredVendorsController < ApplicationController
       # raise "hell"
       @registered_vendor.save
 
+    end
+    if @registered_vendor.persisted?
       redirect_to registered_vendors_path
+    else
+      render :new
     end
   end #create
 
