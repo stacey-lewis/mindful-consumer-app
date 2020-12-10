@@ -1,2 +1,52 @@
-<h1>RegisteredUsers#show</h1>
-<p>Find me in app/views/registered_users/show.html.erb</p>
+
+<h2>Welcome <%= @registered_user.name %></h2>
+
+<h3>Your account details:</h3>
+
+<ul class="show_user_menu">
+  <% if @current_user.present? && @registered_user.id == @current_user.id%>
+     <li><%= link_to "Edit this page", edit_registered_user_path %> </li>
+  <% end %>
+  <% if @current_user.present? && @registered_user.id == @current_user.id%>
+     <li><%= link_to "Delete", registered_user_path, method: "DELETE" %> </li>
+  <% end %>
+</ul>
+
+<div class="user_details">
+  <p>Name: <%=@registered_user.name%></p>
+  <p>Email address: <%=@registered_user.email%></p>
+  <p>Suburb: <%=@registered_user.suburb%></p>
+  <p>Phone number: <%=@registered_user.phone_number%></p>
+  <p>Postcode: <%=@registered_user.postcode%></p>
+  <p>State: <%=@registered_user.state%></p>
+  <p>Opted in for emails: <%=@registered_user.opt_in_for_emails%></p><br>
+</div>
+
+<div class="values_cat_users">
+
+  <h3>These are the ways you are interesting in stepping up your sustainability:</h3>
+
+  <div class="user_value_list">
+    <% @registered_user.consumer_values.each do |val| %>
+      <div class="user_value_list_item">
+        <%= val.name %><br> <%= image_tag val.image %>
+      </div>
+    <% end %>
+  </div>
+
+  <br>
+  <h3>Aspects of your home / life that you want to focus your sustainability efforts:</h3>
+    <div class="user_cat_list">
+      <% @registered_user.consumer_categories.each do |cat| %>
+        <div class="user_cat_list_item">
+          <%= cat.name %><br> <%= image_tag cat.image %>
+        </div>
+      <% end %>
+    </div>
+</div>
+
+<div class="user_recommendations">
+ <!-- show all stores relevant to them that include at least item they have selected  -->
+ <!-- show stores in close proximity that also meet this need -->
+
+</div>

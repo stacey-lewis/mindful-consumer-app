@@ -1,51 +1,55 @@
 
 <div class="vendor_title">
-<ul class="show_menu">
+  <ul class="show_menu">
 
 
-<li><%= link_to "Back to directory", registered_vendors_path%> </li>
-<% if (@current_user.present? && @registered_vendor.id == @current_user.id) || @current_user.present? && @current_user.admin%>
- <li><%= link_to "Edit this page", edit_registered_vendor_path %> </li>
-<% end %>
-<% if @current_user.present? && @current_user.admin%>
- <li><%= link_to "Delete", registered_vendor_path, method: "DELETE" %> </li>
-<% end %>
+    <li><%= link_to "Back to directory", registered_vendors_path%> </li>
+    <% if (@current_user.present? && @registered_vendor.id == @current_user.id) || @current_user.present? && @current_user.admin%>
+       <li><%= link_to "Edit this page", edit_registered_vendor_path %> </li>
+    <% end %>
+    <% if @current_user.present? && @current_user.admin%>
+       <li><%= link_to "Delete", registered_vendor_path, method: "DELETE" %> </li>
+    <% end %>
+  </ul>
 
-<p><%= cl_image_tag @registered_vendor.logo, class: "vendor_show_logo", alt: @registered_vendor.vendor_name%></p>
-<h2><%=@registered_vendor.vendor_name%></h2></div>
-<h3><%=@registered_vendor.suburb %></h3>
+
+  <p><%= cl_image_tag @registered_vendor.logo, class: "vendor_show_logo", alt: @registered_vendor.vendor_name%></p>
+  <h2><%=@registered_vendor.vendor_name%></h2>
+  <h3><%=@registered_vendor.suburb %></h3>
+</div>
 
 <div>
-<p><%= @registered_vendor.bio %></p>
-<%= cl_image_tag @registered_vendor.background_image, class: "vendor_show_background" %>
+  <p><%= @registered_vendor.bio %></p>
+  <%= cl_image_tag @registered_vendor.background_image, class: "vendor_show_background" %>
 </div>
 
 <p><strong>Address:</strong>
-  <%= @registered_vendor.address %>, <%= @registered_vendor.suburb %>, <%= @registered_vendor.state %>, <%= @registered_vendor.postcode %></p>
+  <%= @registered_vendor.address %>, <%= @registered_vendor.suburb %>, <%= @registered_vendor.state %>, <%= @registered_vendor.postcode %>
+</p>
 <br>
 <p><%= @registered_vendor.opening_hours %></p>
 <p><%= link_to @registered_vendor.website, @registered_vendor.website, target: "_blank" %></p>
 <br>
-<div class="values_cat_container">
 
-<h3>Values</h3>
+
+<div class="values_cat_container">
+  <h3>Values</h3>
   <div class="vendor_value_list">
-  <% @registered_vendor.consumer_values.each do |val| %>
-    <div class="vendor_value_list_item">
-<%= val.name %><br> <%= image_tag val.image %>
-    </div>
+    <% @registered_vendor.consumer_values.each do |val| %>
+      <div class="vendor_value_list_item">
+        <%= val.name %><br> <%= image_tag val.image %>
+      </div>
     <% end %>
   </div>
-
 
   <br>
   <h3>Categories</h3>
     <div class="vendor_cat_list">
-    <% @registered_vendor.consumer_categories.each do |cat| %>
-      <div class="vendor_cat_list_item">
-  <%= cat.name %><br> <%= image_tag cat.image %>
-      </div>
+      <% @registered_vendor.consumer_categories.each do |cat| %>
+        <div class="vendor_cat_list_item">
+          <%= cat.name %><br> <%= image_tag cat.image %>
+        </div>
       <% end %>
     </div>
-    </div>
+</div>
 <!-- Add in icons of what they offer -->

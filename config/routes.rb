@@ -17,5 +17,10 @@ Rails.application.routes.draw do
 
   delete '/login' => 'session#destroy' #logout link goes
 
+  get '/login/user' => 'user_session#new' #showing the login form
+  post '/login/user' => 'user_session#create' #form submits to here, performs login, redirects
+
+  delete '/login/user' => 'user_session#destroy' #logout link goes
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

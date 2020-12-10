@@ -1,7 +1,7 @@
 class RegisteredVendorsController < ApplicationController
 
-  before_action :check_for_login, :only => [:edit, :update]
-  before_action :check_for_admin, :only => [:destroy, :new]
+  before_action :check_for_vendor_login, :only => [:edit, :update]
+  before_action :check_for_vendor_login, :only => [:destroy, :new]
 
   def admin
     if @current_user.admin == false
@@ -124,6 +124,9 @@ class RegisteredVendorsController < ApplicationController
       redirect_to registered_vendors_path
     elsif @vendors.length == 0
       flash[:error] = 'Sorry, nothing fits that criteria'
+    elsif @vendors.length >= 1
+      flash[:error] = ""
+
     end #if
 
   end #filter

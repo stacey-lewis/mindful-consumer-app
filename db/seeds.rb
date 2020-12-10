@@ -15,7 +15,8 @@ user1 = RegisteredUser.create!(
   postcode: 3163,
   state: "Victoria",
   phone_number: 0400000000,
-  opt_in_for_emails: true
+  opt_in_for_emails: true,
+  password: "password123"
 )
 
 user2 = RegisteredUser.create!(
@@ -25,7 +26,8 @@ user2 = RegisteredUser.create!(
   postcode: 3070,
   state: "Victoria",
   phone_number: 0400000000,
-  opt_in_for_emails: false
+  opt_in_for_emails: false,
+  password: "password123"
 )
 
 user3 = RegisteredUser.create!(
@@ -35,7 +37,8 @@ user3 = RegisteredUser.create!(
   postcode: 3199,
   state: "Victoria",
   phone_number: 0400000000,
-  opt_in_for_emails: false
+  opt_in_for_emails: false,
+  password: "password123"
 )
 
 user3 = RegisteredUser.create!(
@@ -45,7 +48,8 @@ user3 = RegisteredUser.create!(
   postcode: 3207,
   state: "Victoria",
   phone_number: 0400000000,
-  opt_in_for_emails: false
+  opt_in_for_emails: false,
+  password: "password123"
 )
 
 puts "Added #{RegisteredUser.count} users"

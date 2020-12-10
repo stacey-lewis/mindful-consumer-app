@@ -5,6 +5,7 @@ class SessionController < ApplicationController
   end #end new
 
   def create
+
     registered_vendor = RegisteredVendor.find_by :email_address => params[:email_address]
 
     if registered_vendor.present? && registered_vendor.authenticate(params[:password])
