@@ -1,13 +1,14 @@
 # README
 
 Mindful consumer website created with Ruby on Rails, accessible here: https://mindful-consumer.herokuapp.com/.
+
 It is built using 4 models: vendors, general public users, categories and values. Many-to-many relationships exist between vendors/users and categories/values.
 
 About the concept:
 Mindful consumer site is designed to connect consumers and businesses with like-minded values and products that centre around sustainability outcomes.
 
 The site functionality allows:
-* general public users to create an account and nominate areas of interest.
+* general public users to create an account and nominate areas of interest. They can also add and delete their own profiles.
 * search for businesses that have specific values or categories.
 * an overarching admin user has permissions to create new vendors, and edit and delete them.
 * Vendors themselves can edit their own profiles.
@@ -15,6 +16,7 @@ The site functionality allows:
 Planned improvements:
 * detailed content and about page
 * restrictions around image upload for vendors to maintain integrity of site
+* integrate images are clickable links, including social media icons.
 * minimum details requirement for creating / editing vendor profile
 * include a model that allows vendors to create and tag blog content.
 * updated home page that profiles vendors and recent content.
